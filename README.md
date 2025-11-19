@@ -1,1 +1,3 @@
 # Stock-Pilot
+
+TECH STACK - HTML , CSS , JAVA SCRIPT 
