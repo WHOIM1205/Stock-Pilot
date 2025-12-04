@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Inventory Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Inventory Dashboard</h1>
+            <button id="logoutBtn" class="btn btn-logout">Logout</button>
+        </header>
+
+        <div class="dashboard-content">
+            <!-- Add Item Section -->
+            <section class="card add-item-section">
+                <h2>Add New Item</h2>
+                <form id="addItemForm" class="item-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemName">Name</label>
+                            <input type="text" id="itemName" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="itemQuantity">Quantity</label>
+                            <input type="number" id="itemQuantity" name="quantity" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="itemPrice">Price</label>
+                            <input type="number" id="itemPrice" name="price" step="0.01" min="0" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Item</button>
+                </form>
+            </section>
+
+            <!-- Search Section -->
+            <section class="card search-section">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search items by name...">
+                    <button id="searchBtn" class="btn btn-secondary">Search</button>
+                    <button id="clearSearchBtn" class="btn btn-outline">Clear</button>
+                </div>
+            </section>
+
+            <!-- Items Table Section -->
+            <section class="card items-section">
+                <h2>Inventory Items</h2>
+                <div class="table-container">
+                    <table id="itemsTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsTableBody">
+                            <!-- Items will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="loadingMessage" class="loading-message hidden">Loading...</div>
+                <div id="emptyMessage" class="empty-message hidden">No items found</div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Item</h2>
+                <button class="modal-close" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="editItemForm">
+                <input type="hidden" id="editItemId">
+
+                <div class="form-group">
+                    <label for="editItemName">Name</label>
+                    <input type="text" id="editItemName" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editItemQuantity">Quantity</label>
+                    <input type="number" id="editItemQuantity" name="quantity" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editItemPrice">Price</label>
+                    <input type="number" id="editItemPrice" name="price" step="0.01" min="0" required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js?v=fixed202512040300"></script>
+    <script src="js/dashboard.js?v=fixed202512040300"></script>
+</body>
+
+</html>
